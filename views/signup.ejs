@@ -1,14 +1,20 @@
 
 <% if (!loggedIn) { %>
-    <h2>signup</h2>
+    <h2>Create Account</h2>
 
+   
+<p></p>
     <form action="/users" method="post">
         <label for="email">email</label>
-        <input type="text" name="email">
+        <input type="text" name="email" required>
         <label for="password">password</label>
-        <input type="password" name="password">
+        <input type="password" name="password" required>
         <button>signup</button>
     </form>
+    
 <% } else { %>
     <p>You're already logged in!</p>
 <% } %>
+
+<div class="description"><h2>Free Coffee</h2>
+    <h4>Earn points with each purchase and redeem them for free coffees. Your morning coffee tastes even better when it’s on us!</h4></div>

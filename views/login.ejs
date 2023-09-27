@@ -1,12 +1,16 @@
 <h2>Login</h2>
 
-<p><%= message %></p>
+<% if (typeof message !== 'undefined') { %>
+  <p><%= message %></p>
+<% } %>
 
 <form action="/login" method="post">
     <label for="email">Email</label>
-    <input type="text" id="email" name="email">
+    <input type="text" id="email" name="email" required>
     <label for="password">Password</label>
-    <input type="password" name="password">
+    <input type="password" name="password" required>
     
     <button>Login</button>
 </form>
+<div class="description"><h2>Exclusive Offers</h2>
+    <h4>Being a member of Perk Points offers you exclusive deals and offers only available to members. This includes early access to new products, special events, and bonus points days.</h4></div>

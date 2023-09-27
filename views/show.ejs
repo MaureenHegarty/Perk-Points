@@ -5,7 +5,6 @@
 
 <img src="<%= coffee.image_url %>" alt="">
 
-<!--form only works with 2 http methods: get & post -->
 <form action="/coffees/<%= coffee.id %>" method="post">
     <input type="hidden" name="_method" value="delete">
     <button>delete</button>
