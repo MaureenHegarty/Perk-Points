@@ -1,0 +1,51 @@
+body {
+    background-color: beige;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+header {
+    background-color: limegreen;
+    padding: 20px;
+    color: white;
+}
+
+.logo {
+    font-size: 1.5em;
+}
+
+.burger-menu {
+    display: none;
+}
+
+.burger-menu .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: white;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+}
+
+footer {
+    background-color: limegreen;
+    padding: 10px;
+    color: white;
+    text-align: center;
+}

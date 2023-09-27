@@ -1,0 +1,14 @@
+
+<% if (!loggedIn) { %>
+    <h2>signup</h2>
+
+    <form action="/users" method="post">
+        <label for="email">email</label>
+        <input type="text" name="email">
+        <label for="password">password</label>
+        <input type="password" name="password">
+        <button>signup</button>
+    </form>
+<% } else { %>
+    <p>You're already logged in!</p>
+<% } %>

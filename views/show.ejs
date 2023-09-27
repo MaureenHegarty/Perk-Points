@@ -1,0 +1,14 @@
+<h2>Coffee details</h2>
+
+<%= coffee.coffee_name %>
+
+
+<img src="<%= coffee.image_url %>" alt="">
+
+<!--form only works with 2 http methods: get & post -->
+<form action="/coffees/<%= coffee.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button>delete</button>
+</form>
+
+<a href="/coffees/<%= coffee.id %>/edit">edit coffee</a>

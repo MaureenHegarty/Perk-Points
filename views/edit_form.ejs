@@ -1,0 +1,10 @@
+<h2>Want to Update Your Coffee?</h2>
+
+<form action="/coffees/<%= coffee.id %>" method="post">
+    <input type="hidden" name="_method" value="put">
+    <label for="title">title</label>
+    <input name="title" type="text" value="<%= coffee.title %>">
+    <label for="image_url">image url</label>
+    <input name="image_url" type="text" value="<%= coffee.image_url %>">
+    <button>update</button>
+</form>

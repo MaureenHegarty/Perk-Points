@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <% if (userId) { %>
+        <%= user.email %>
+    <% } %>   
+
+    <nav>
+        <a href="/">home</a>
+        <a href="/locations">locations</a>
+        <% if (userId) { %>
+            <a href="/coffees/new">share</a>
+            <!-- Add a facebook share button -->
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:9000" target="_blank" rel="noopener noreferrer">Share on Facebook</a>
+        <% } %>
+    
+        <% if (userId) { %>  
+            <form action="/logout" method="post">
+                <input type="hidden" name="_method" value="delete">
+                <button>logout</button>
+            </form>
+        <% } else { %>  
+            <a href="/login">login</a>
+            <a href="/signup">signup</a>
+        <% } %> 
+    </nav>
+    
+    <h1>Perk Points</h1>
+
+    <%- body %>
+
+</body>
+</html>

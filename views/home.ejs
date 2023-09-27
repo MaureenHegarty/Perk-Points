@@ -1,0 +1,15 @@
+
+<h2>Coffee details</h2>
+
+<% for (let coffee of coffees)  { %>
+        
+<h2>
+    <a href="/coffees/<%= coffee.id %>">
+        <%= coffee.coffee_name %>
+    </a>
+</h2>
+<img src="<%= coffee.image_url %>" alt="">
+
+<% } %>
+
+
