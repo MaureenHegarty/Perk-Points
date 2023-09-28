@@ -2,6 +2,27 @@ const express = require('express')
 const router = express.Router()
 const db = require('../db')
 const ensureLoggedIn = require('../middlewares/ensure_logged_in')
+const upload = require('../middlewares/upload')
+
+
+router.get('/form', (req, res) => {
+    res.render('form')
+})
+
+router.post('/upload', upload.single('uploadfile'), (req, res) => {
+    console.log(req.file.path)
+    let coffee_name = req.body.coffee_name;
+    const sql = `INSERT INTO coffees (user_id, coffee_name, image_url,) VALUES ($1, $2, $3)
+    RETURNING *;
+    `
+    
+    db.query(sql, [req.session.userId, coffee_name, req.file.path, location], (err, dbRes) => {
+        if (err) {
+            console.log(err);
+        }
+    res.send('yay')
+})
+})
 
 
 router.get('/new', ensureLoggedIn, (req, res) => {

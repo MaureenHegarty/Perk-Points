@@ -1,10 +1,23 @@
-<h2>Want to Update Your Coffee?</h2>
+<div class="description"><h2>Want to update your Pics?</h2>
+    <h4>Welcome to Perk Points, where every sip counts!<br>Share your love for coffee with the world. Post your coffee moments, earn points, and brew up rewards. <br></h4></div>
+
 
 <form action="/coffees/<%= coffee.id %>" method="post">
     <input type="hidden" name="_method" value="put">
     <label for="title">title</label>
-    <input name="title" type="text" value="<%= coffee.title %>">
+    <input name="title" type="text" value="<%= coffee.coffee_name %>">
     <label for="image_url">image url</label>
     <input name="image_url" type="text" value="<%= coffee.image_url %>">
     <button>update</button>
 </form>
+<div class="description"><h2></h2>
+    <h4>It’s more than just a cup of coffee, it’s a journey worth sharing. <br></h4></div>
+<p></p>
+<p></p>
+
+<!-- <form action="/coffees/upload" method="post" enctype="multipart/form-data">
+    <label for="">file upload</label>
+    <input type="file" name="uploadfile">
+    <button>submit</button>
+
+</form> -->

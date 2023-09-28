@@ -22,9 +22,10 @@ app.use(express.urlencoded({extended: true}))
 
 app.use(reqBodyMethodOverride) 
 app.use(session({
-    secret: process.env.SESSION_SECRET || 'keyboard cat',
+    cookie: { maxAge: 1000 * 60 * 60 * 24 * 3 },
+    secret: process.env.SESSION_SECRET || "keyboard cat",
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
   }))
 
 

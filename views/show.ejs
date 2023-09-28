@@ -1,13 +1,18 @@
-<h2>Coffee details</h2>
+<h2>Check out this Coffee!</h2>
 
-<%= coffee.coffee_name %>
+<h2 class="coffee-name"><%= coffee.coffee_name %></h2>
 
-
+<p></p>
 <img src="<%= coffee.image_url %>" alt="">
+<div class="description"><h3>Want to delete or update your coffee?</h2>
+    <h4>Go right ahead...we love getting our members updates!</h4></div>
 
 <form action="/coffees/<%= coffee.id %>" method="post">
     <input type="hidden" name="_method" value="delete">
     <button>delete</button>
 </form>
 
-<a href="/coffees/<%= coffee.id %>/edit">edit coffee</a>
+
+<form action="/coffees/<%= coffee.id %>/edit" method="get">
+    <button type="submit">update</button>
+</form>
