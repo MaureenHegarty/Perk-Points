@@ -1,19 +1,24 @@
-
 <% if (!loggedIn) { %>
     <p></p>
     <div class="description"><h2>Become a Member</h2>
         <h4>Welcome to Perk Points, where every sip counts!<br>Share your love for coffee with the world. As a member, you can post your coffee moments, earn points, and brew up rewards!<br></h4></div>
 
-   
-<p></p>
-    <form action="/users" method="post">
-        <label for="email">email</label>
-        <input type="text" name="email" required>
-        <label for="password">password</label>
-        <input type="password" name="password" required>
-        <button>signup</button>
-    </form>
-    
+    <p></p>
+    <div class="login-container">
+        <h2>Create Your Account</h2>
+        <form action="/users" method="post">
+            <div class="input-container">
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" required>
+            </div>
+            <div class="input-container">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+
 <% } else { %>
     <p>You're already logged in!</p>
 <% } %>
