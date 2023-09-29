@@ -11,9 +11,9 @@ Perk Points is a Coffee Card Loyalty Program which rewards members with points f
 - requires account creation to become a member
 -  list of partner locations
 ￼
-![alt text](/public/images/9000CE96-6E4A-4C2F-9859-AD6F983C0D05_1_105_c.jpeg)
+![alt text](/public/images/ERD-draft-notes.png)
 ￼
-![alt text](/public/images/Perk_Points_Wordmark.png)
+![alt text](/public/images/Draft-tables.png)
 
 ￼
 ![alt text](/public/images/Perk_Points_Logo(1).png)

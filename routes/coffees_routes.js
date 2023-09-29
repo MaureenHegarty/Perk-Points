@@ -9,6 +9,7 @@ router.get('/form', (req, res) => {
     res.render('form')
 })
 
+
 router.post('/upload', upload.single('uploadfile'), (req, res) => {
     console.log(req.file.path)
     let coffee_name = req.body.coffee_name;
@@ -65,7 +66,22 @@ router.delete('/:id', ensureLoggedIn, (req, res) => {
 })
 
 
+router.get('/coffees/account', ensureLoggedIn, (req, res) => {
+    console.log([req.session.userId]);
 
+    const sql = `SELECT * FROM users WHERE id = $1`
+    const values = [req.session.userId]
+    db.query(sql, values, (err, dbRes) => {
+        if (err) {
+            console.log(err);
+            return;
+        }
+
+        let user = dbRes.rows[0]
+        res.render('account', { userId: req.session.userId });
+        console.log([user])
+    })
+})
 
 router.get('/:id', (req, res) => {
     const sql = `SELECT * FROM coffees WHERE id = $1`

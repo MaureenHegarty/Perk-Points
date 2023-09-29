@@ -14,15 +14,15 @@
         <a href="/locations">locations</a>
         <% if (userId) { %>
             <a href="/coffees/new">share</a>
-            <a href="/account">account</a>
+            <!-- <a href="/coffees/account">account</a> -->
             <form action="/logout" method="post">
                 <input type="hidden" name="_method" value="delete">
                 <button>logout</button>
             </form>
-        <% } else if (!userId) { %>
+        <% } else { %>
             <a href="/login">login</a>
             <a href="/signup">signup</a>
-          <% } %>
+        <% } %>
     </nav>
 
     <div class="back-ground-color">
@@ -37,4 +37,3 @@
 
 </body>
 </html>
-
