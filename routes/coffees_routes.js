@@ -51,9 +51,9 @@ router.post('/', ensureLoggedIn, (req, res) => {
 // should the delete button be hidden?
 router.delete('/:id', ensureLoggedIn, (req, res) => {
 
-    if(req.session.userId === coffee.user_id) {
-        res.send.message('you must be logged in')
-    }
+    // if(req.session.userId === coffee.user_id) {
+    //     res.send.message('you must be logged in')
+    // }
 
     const sql = `DELETE FROM coffees WHERE id = ${req.params.id};`
     db.query(sql, (err, dbRes) => {

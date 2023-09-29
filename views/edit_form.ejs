@@ -5,7 +5,7 @@
 <form action="/coffees/<%= coffee.id %>" method="post">
     <input type="hidden" name="_method" value="put">
     <label for="title">title</label>
-    <input name="title" type="text" value="<%= coffee.coffee_name %>">
+    <input name="coffee_name" type="text" value="<%= coffee.coffee_name %>">
     <label for="image_url">image url</label>
     <input name="image_url" type="text" value="<%= coffee.image_url %>">
     <button>update</button>
