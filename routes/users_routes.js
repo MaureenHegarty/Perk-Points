@@ -32,7 +32,7 @@ router.post('/forgot-password', (req, res) => {
     // Generate a random token
     const token = crypto.randomBytes(20).toString('hex');
 
-    // Store the token in your database associated with the user's email
+    // Store the token in database associated with the user's email
     const sql = `UPDATE users SET reset_password_token = $1 WHERE email = $2`;
     const values = [token, email];
 
@@ -56,7 +56,7 @@ router.post('/forgot-password', (req, res) => {
             from: process.env.EMAIL_USERNAME,
             to: email,
             subject: 'Password Reset',
-            text: `You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\nPlease click on the following link, or paste this into your browser to complete the process:\n\nhttp://yourwebsite.com/reset-password?token=${token}\n\nIf you did not request this, please ignore this email and your password will remain unchanged.\n`
+            text: `You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\nPlease click on the following link, or paste this into your browser to complete the process:\n\nhttp://perkpoints.com/reset-password?token=${token}\n\nIf you did not request this, please ignore this email and your password will remain unchanged.\n`
         };
 
         // Send the email
@@ -70,7 +70,7 @@ router.get('/forgot-password', (req, res) => {
     let message = 'Please enter your email to reset your password';
     let loggedIn = false;
     res.render('forgot_password', { message: message, loggedIn: loggedIn });
-});
+}); 
 
 
 
