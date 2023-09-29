@@ -43,6 +43,8 @@ Perk Points is a Coffee Card Loyalty Program which rewards members with points f
 
 ## Lessons learnt
 - More planning to define tables eg a locations table to mirror upload of pic of favourite cafe
+- More debugging
+- More testing 
 
 
 ## Future features
