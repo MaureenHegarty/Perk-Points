@@ -281,4 +281,25 @@ form[action="/comments"] label,
         font-weight: 400;
         font-size: 14px;
     }
+    .coffee-name {
+        position: relative;
+    }
+    
+    .coffee-name::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #61a6ab;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.3s ease-in-out;
+    }
+    
+    .coffee-name:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
     
