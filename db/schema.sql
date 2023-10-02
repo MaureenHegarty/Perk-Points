@@ -4,6 +4,7 @@ CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     email TEXT NOT NULL,
     password_digest TEXT NOT NULL
+    name TEXT NOT NULL
 );
 
 CREATE TABLE coffees (
@@ -13,6 +14,15 @@ CREATE TABLE coffees (
     image_url TEXT,
     location TEXT
 );
+
+CREATE TABLE comments (
+    id SERIAL PRIMARY KEY,
+    content TEXT,
+    coffee_id INTEGER,
+    user_id INTEGER
+);
+
+
 
 CREATE TABLE points (
     id SERIAL PRIMARY KEY,
@@ -26,6 +36,7 @@ CREATE TABLE points_used (
     points_id INTEGER REFERENCES points(id),
     date_used TIMESTAMP NOT NULL
 );
+
 
 
 User routes:

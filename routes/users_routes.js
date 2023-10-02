@@ -12,15 +12,16 @@ router.get('/signup', (req, res) => {
 
 router.post('/users', (req, res) => {
     console.log(req.body);
-    const sql = `INSERT INTO users (email, password_digest) VALUES ($1, $2)`;
-    const values = [req.body.email, bcrypt.hashSync(req.body.password, 10)];
+    const sql = `INSERT INTO users (name, email, password_digest) VALUES ($1, $2, $3) RETURNING name`;
+    const values = [req.body.name,req.body.email, bcrypt.hashSync(req.body.password, 10)];
 
     db.query(sql, values, (err, dbRes) => {
         if (err) {
             console.log(err);
             return res.render('signup', { message: 'Error creating user.' });
         }
-
+        const userName = dbRes.rows[0].name;
+        console.log(`User ${userName} created.`);
         
         return res.redirect('/login')
     })

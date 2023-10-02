@@ -13,7 +13,7 @@ router.get('/form', (req, res) => {
 router.post('/upload', upload.single('uploadfile'), (req, res) => {
     console.log(req.file.path)
     let coffee_name = req.body.coffee_name;
-    const sql = `INSERT INTO coffees (user_id, coffee_name, image_url,) VALUES ($1, $2, $3)
+    const sql = `INSERT INTO coffees (user_id, coffee_name, image_url) VALUES ($1, $2, $3)
     RETURNING *;
     `
     
@@ -50,20 +50,32 @@ router.post('/', ensureLoggedIn, (req, res) => {
 
 // should the delete button be hidden?
 router.delete('/:id', ensureLoggedIn, (req, res) => {
-
-    // if(req.session.userId === coffee.user_id) {
-    //     res.send.message('you must be logged in')
-    // }
-
-    const sql = `DELETE FROM coffees WHERE id = ${req.params.id};`
-    db.query(sql, (err, dbRes) => {
+    const sql = 'SELECT * FROM coffees WHERE id = $1';
+    db.query(sql, [req.params.id], (err, dbRes) => {
         if (err) {
             console.log(err);
-            return;
+            return res.status(500).send('An error occurred');
         }
-        res.redirect('/')
-    })
-})
+
+        const coffee = dbRes.rows[0];
+        if(req.session.userId === coffee.user_id) {
+            // User is authorized to delete the coffee
+            const deleteSql = 'DELETE FROM coffees WHERE id = $1';
+            db.query(deleteSql, [req.params.id], (deleteErr, deleteRes) => {
+                if (deleteErr) {
+                    console.log(deleteErr);
+                    return res.status(500).send('An error occurred while deleting the coffee');
+                }
+
+                // Coffee has been deleted successfully
+                res.redirect('/');
+            });
+        } else {
+            res.send('You must be logged in as the member who posted this coffee in order to delete it.');
+        }
+    });
+});
+
 
 
 router.get('/coffees/account', ensureLoggedIn, (req, res) => {
@@ -83,11 +95,11 @@ router.get('/coffees/account', ensureLoggedIn, (req, res) => {
     })
 })
 
-router.get('/:id', (req, res) => {
+
+router.get('/:id',ensureLoggedIn, (req, res) => {
     const sql = `SELECT * FROM coffees WHERE id = $1`
     const values = [req.params.id]
 
-       
     db.query(sql, values, (err, dbRes) => {
         if (err) {
             console.log(err);
@@ -95,10 +107,44 @@ router.get('/:id', (req, res) => {
         }
 
         let coffee = dbRes.rows[0]
-        res.render('show', { coffee })
-        console.log([coffee])
+
+        // Query to get comments
+        const commentSql = `
+            SELECT comments.content, users.name 
+            FROM comments
+            JOIN users ON comments.user_id = users.id
+            WHERE coffee_id = $1
+        `;
+        db.query(commentSql, values, (err, dbResComments) => {
+            if (err) {
+                console.log(err);
+                return;
+            }
+
+            let comments = dbResComments.rows
+            let loggedIn = req.session.userId ? true : false;
+            res.render('show', { coffee, comments, loggedIn })
+        })
     })
 })
+
+
+router.post('/comments', ensureLoggedIn, (req, res) => {
+    const sql = `INSERT INTO comments (content, coffee_id, user_id) VALUES ($1, $2, $3) RETURNING *;`
+    const values = [req.body.content, req.body.coffee_id, req.session.userId]
+
+    db.query(sql, values, (err, dbRes) => {
+        if (err) {
+            console.log(err);
+            return;
+        }
+
+        res.redirect(`/coffees/${req.body.coffee_id}`) 
+    })
+})
+
+
+
 
 router.get('/:id/edit', ensureLoggedIn, (req, res) => {
 
@@ -113,7 +159,7 @@ router.get('/:id/edit', ensureLoggedIn, (req, res) => {
         }
 
         let coffee = dbRes.rows[0]
-        if (req.session.userId !== coffee.user_id) {
+        if (Number(req.session.userId) !== coffee.user_id) {
             res.status(403).send('You do not have permission to edit this post');
             return;
         }
@@ -145,6 +191,9 @@ router.put('/:id', ensureLoggedIn, (req, res) => {
 
 })
 })
+
+
+
 
 
 module.exports = router

@@ -11,6 +11,8 @@ const coffeesRoutes = require('./routes/coffees_routes')
 const sessionsRoutes = require('./routes/sessions_routes')
 const pagesRoutes = require('./routes/pages_routes')
 const usersRoutes = require('./routes/users_routes')
+const commentsRoutes = require('./routes/comments_routes')
+
 const port = process.env.PORT || 9000
 
 
@@ -39,6 +41,8 @@ app.use('/', pagesRoutes)
 app.use('/', sessionsRoutes)
 app.use('/coffees', coffeesRoutes)
 app.use('/', usersRoutes)
+app.use('/comments', commentsRoutes)
+
 
 
 

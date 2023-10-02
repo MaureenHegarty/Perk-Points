@@ -35,7 +35,7 @@ router.post('/login', (req, res) => {
 
         bcrypt.compare(userInputPassword, hashedPasswordFromDb, (err, result) => {
             if (result) {
-                req.session.userId = dbRes.rows[0].id
+                req.session.userId = dbRes.rows[0].id;
                 return res.redirect('/');
             } else {
                 return res.render('login', { message: 'Incorrect email or password', loggedIn: false })

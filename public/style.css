@@ -252,3 +252,33 @@ input {
         font-family: 'La Belle Aurore', cursive;
     }
     
+    textarea[name="content"] {
+        border-radius: 5px;
+        border: 2px solid #61a6ab;
+    }
+form[action="/comments"] label,
+    form[action="/comments"] textarea,
+    form[action="/comments"] button {
+        display: block;
+        margin-top: 10px;
+    }
+
+    .comment {
+        border-top: 2px dotted #61a6ab;
+        padding: 10px;
+        margin-bottom: 10px;
+        list-style-type: none;
+        font-family: 'La Belle Aurore', cursive;
+        font-size: 20px;
+    }
+
+    .bottom-space {
+        height: 150px;
+     }
+
+     .posted-by {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+    }
+    
