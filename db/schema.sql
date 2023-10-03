@@ -3,8 +3,15 @@ CREATE DATABASE coffee_card;
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     email TEXT NOT NULL,
-    password_digest TEXT NOT NULL
-    name TEXT NOT NULL
+    password_digest TEXT NOT NULL,
+    name TEXT NOT NULL,
+    first_name TEXT,
+    last_name TEXT,
+    address TEXT,
+    phone TEXT,
+    dob DATE,
+    profile_picture TEXT,
+    bio TEXT
 );
 
 CREATE TABLE coffees (

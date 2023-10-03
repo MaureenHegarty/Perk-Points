@@ -29,7 +29,7 @@
     <% for(let comment of comments) { %>
         <div class="comment">
             <p><%= comment.content %></p>
-            <span class="posted-by">Posted by:</span> <%= comment.name %>
+            <span class="posted-by">Posted by:</span> <%= user.first_name %> <%= user.last_name %>
         </div>
     <% } %>
 <% } else { %>

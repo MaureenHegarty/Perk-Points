@@ -139,7 +139,16 @@ router.post('/comments', ensureLoggedIn, (req, res) => {
             return;
         }
 
-        res.redirect(`/coffees/${req.body.coffee_id}`) 
+        const sqlUser = `SELECT first_name, last_name FROM users WHERE id = $1;`
+        db.query(sqlUser, [req.session.userId], (errUser, dbResUser) => {
+            if (errUser) {
+                console.log(errUser);
+                return;
+            }
+
+            res.locals.user = dbResUser.rows[0];
+            res.redirect(`/coffees/${req.body.coffee_id}`) 
+        });
     })
 })
 

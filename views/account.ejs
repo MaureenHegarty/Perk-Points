@@ -1,13 +1,44 @@
+<h2>Account</h2>
 
-<% if (message) { %>
-    <p><%= message %></p>
-  <% } %>
+<form action="/users/<%= user.id %>" method="post" class="user-form">
+  <input type="hidden" name="_method" value="put">
+  <div>
+    <label for="email">Email</label>
+    <input name="email" type="text" value="<%= user.email %>">
+  </div>
+  <div>
+    <label for="first_name">First Name</label>
+    <input name="first_name" type="text" value="<%= user.first_name %>">
+  </div>
+  <div>
+    <label for="last_name">Last Name</label>
+    <input name="last_name" type="text" value="<%= user.last_name %>">
+  </div>
+  <div>
+    <label for="address">Address</label>
+    <input name="address" type="text" value="<%= user.address %>">
+  </div>
+  <div>
+    <label for="phone">Phone Number</label>
+    <input name="phone" type="text" value="<%= user.phone %>">
+  </div>
+  <div>
+    <label for="dob">Date of Birth</label>
+    <input name="dob" type="date" value="<%= user.dob ? user.dob.toDateString() : '' %>">
+  </div>
+  <div>
+    <label for="bio">Bio</label>
+    <textarea name="bio"><%= user.bio %></textarea>
+  </div>
 
+  
+  <!-- <div>
+    <label for="profile_picture">Profile Picture URL</label>
+    <input name="profile_picture" type="text" value="<%= user.profile_picture %>">
+  </div>
+  -->
 
-  personal information
-points overview
-settings
-help/support link 
+  <button>Update</button>
+</form>
 
-? unique membership number?
-? auto generated email "thank you for sigining up"
+<div class="bottom-space"></div>

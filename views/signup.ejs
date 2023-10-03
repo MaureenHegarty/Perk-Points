@@ -8,8 +8,12 @@
         <h2>Create Your Account</h2>
         <form action="/users" method="post">
             <div class="input-container">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required>
+                <label for="first_name">First Name</label>
+                <input type="text" id="first_name" name="first_name" required>
+            </div>
+            <div class="input-container">
+                <label for="last_name">Last Name</label>
+                <input type="text" id="last_name" name="last_name" required>
             </div>
             <div class="input-container">
                 <label for="email">Email</label>
@@ -19,8 +23,28 @@
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <button type="submit">Sign Up</button>
-        </form>
+            <div class="input-container">
+                <label for="confirm_password">Confirm Password</label>
+                <input type="password" id="confirm_password" name="confirm_password" required>
+            </div>
+            <div class="input-container">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" name="dob" required>
+            </div>
+            <div class="input-container">
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+            <div class="input-container">
+                <label for="phone">Phone Number</label>
+                <input type="text" id="phone" name="phone" required>
+            </div> 
+            <div class="input-container">
+                 <label for="">Your bio</label>
+                <textarea name="bio"></textarea>  
+            </div> 
+            <button type="submit">Sign Up</button> 
+        </form> 
     </div>
 
 <% } else { %>
@@ -28,6 +52,6 @@
 <% } %>
 
 <div class="description"><h2>Free Coffee</h2>
-    <h4>Earn points with each purchase and redeem them for free coffees. <br>Your morning coffee tastes even better when it’s on us!</h4></div>
+    <h4>Earn points with each purchase and redeem them for free coffees. Your morning coffee tastes even better when it’s on us!</h4></div>
 
-    <div class="bottom-space"></div>
+<div class="bottom-space"></div> 
