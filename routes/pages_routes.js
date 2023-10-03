@@ -8,6 +8,7 @@ router.get('/', (req, res) => {
     console.log(req.session.userId)
     db.query('SELECT * FROM coffees order by coffee_name;', (err, dbRes) => {
         let coffees = dbRes.rows
+        console.log(err)
         res.render('home', { coffees: coffees})
     })
 })
