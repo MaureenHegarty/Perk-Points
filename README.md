@@ -2,7 +2,7 @@
 
 Perk Points is a Coffee Card Loyalty Program which rewards members with points from purchasing coffees,  posting coffee pics on the app.
 
-## to see my live project [here](https://perk-points.onrender.com)
+## to see my live project [here](https://perk-points-yr5i.onrender.com)
 
 
 ## About
