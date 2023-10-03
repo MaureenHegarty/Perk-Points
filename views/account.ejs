@@ -1,6 +1,13 @@
+<% if (messages.info) { %>
+  <div class="alert alert-info">
+    <%= messages.info %>
+  </div>
+<% } %>
+
 <h2>Account</h2>
 
-<form action="/users/<%= user.id %>" method="post" class="user-form">
+<form action="/account/<%= user.id %>" method="post" class="user-form">
+
   <input type="hidden" name="_method" value="put">
   <div>
     <label for="email">Email</label>
@@ -24,8 +31,9 @@
   </div>
   <div>
     <label for="dob">Date of Birth</label>
-    <input name="dob" type="date" value="<%= user.dob ? user.dob.toDateString() : '' %>">
-  </div>
+    <input name="dob" type="date" value="<%= user.dob ? user.dob.toISOString().split('T')[0] : '' %>" readonly>
+</div>
+
   <div>
     <label for="bio">Bio</label>
     <textarea name="bio"><%= user.bio %></textarea>
@@ -40,5 +48,12 @@
 
   <button>Update</button>
 </form>
+<% if (messages.info) { %>
+  <div class="alert alert-info">
+    <%= messages.info %>
+  </div>
+<% } %>
+
+<!-- Rest of your HTML -->
 
 <div class="bottom-space"></div>

@@ -169,7 +169,7 @@ router.get('/:id/edit', ensureLoggedIn, (req, res) => {
 
         let coffee = dbRes.rows[0]
         if (Number(req.session.userId) !== coffee.user_id) {
-            res.status(403).send('You do not have permission to edit this post');
+            res.status(403).send('You must be logged in as the member who posted this coffee in order to update it.');
             return;
         }
 

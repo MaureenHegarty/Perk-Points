@@ -12,6 +12,10 @@ const sessionsRoutes = require('./routes/sessions_routes')
 const pagesRoutes = require('./routes/pages_routes')
 const usersRoutes = require('./routes/users_routes')
 const commentsRoutes = require('./routes/comments_routes')
+const flash = require('connect-flash');
+
+
+
 
 const port = process.env.PORT || 9000
 
@@ -29,6 +33,12 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
   }))
+app.use(flash());
+
+app.use((req, res, next) => {
+  res.locals.messages = req.flash();
+  next();
+});
 
 
 // ==== routes ======================================
@@ -39,8 +49,8 @@ app.use(expressLayouts)
 
 app.use('/', pagesRoutes)
 app.use('/', sessionsRoutes)
-app.use('/coffees', coffeesRoutes)
 app.use('/', usersRoutes)
+app.use('/coffees', coffeesRoutes)
 app.use('/comments', commentsRoutes)
 
 
