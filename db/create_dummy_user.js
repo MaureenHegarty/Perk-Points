@@ -2,7 +2,6 @@
 
 const pg = require('pg')
 const bcrypt = require('bcrypt')
-
 const db = new pg.Pool({
     database: 'coffee_card'
 })

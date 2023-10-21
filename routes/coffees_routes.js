@@ -120,7 +120,7 @@ router.get('/:id',ensureLoggedIn, (req, res) => {
                 console.log(err);
                 return;
             }
-
+            console.log(dbResComments.rows)
             let comments = dbResComments.rows
             let loggedIn = req.session.userId ? true : false;
             res.render('show', { coffee, comments, loggedIn })
