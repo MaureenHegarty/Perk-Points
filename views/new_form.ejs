@@ -1,17 +1,59 @@
+<!-- http://localhost:8080/coffees/new -->
 
 <div class="description">
-    <h2>Share a Pic!</h2>
-    <h4>Share a pic of your best coffee and win more perk points!<br>Our coffee partners source their beans from the finest in the world, providing a rich flavour profile. Every sip is a new experience!<br>Check out what members have posted below<br></h4>
+  <h2>Share a Pic!</h2>
+  <h4>
+    Share a pic of your best coffee and win more perk points!<br />Our coffee
+    partners source their beans from the finest in the world, providing a rich
+    flavour profile. Every sip is a new experience!<br />Check out what members
+    have posted below<br />
+  </h4>
 </div>
-
-<form action="/coffees" method="post">
-    <label for="">Coffee Name</label>
-    <input name="title" type="text" id="coffeeName" placeholder="type of coffee"><br>
-    <label for="">Image URL</label>
-    <input name="image_url" type="text">
-    <button>Share</button>
+<style>
+  .new-coffee {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding: 0 60px;
+  }
+</style>
+<form
+  class="new-coffee"
+  action="/coffees"
+  method="post"
+  enctype="multipart/form-data"
+>
+  <label for="">Describe your coffee picture</label>
+  <p></p>
+  <input
+    name="coffee_name"
+    type="text"
+    id="coffee_name"
+    placeholder="tell us about your delicious coffee!"
+  /><br />
+  <label for="">Upload your photo</label>
+  <input name="photo" type="file" />
+  <style>
+    .coffees-new {
+      width: 60%;
+    }
+  </style>
+  <center>
+    <button class="coffees-new">Post it to earn Perk Points!</button>
+  </center>
 </form>
-    <div class="bottom-space"></div>
-
-
-
+<div class="bottom-space"></div>
+<!-- 
+<form action="/coffees" method="post">
+  <label for="">Coffee Name</label>
+  <input
+    name="title"
+    type="text"
+    id="coffeeName"
+    placeholder="type of coffee"
+  /><br />
+  <label for="">Image URL</label>
+  <input name="image_url" type="text" />
+  <button>Share</button>
+</form>
+<div class="bottom-space"></div> -->

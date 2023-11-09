@@ -1,57 +1,88 @@
 <% if (!loggedIn) { %>
-    <p></p>
-    <div class="description"><h2>Become a Member</h2>
-        <h4>Welcome to Perk Points, where every sip counts!<br>Share your love for coffee with the world. As a member, you can post your coffee moments, earn points, and brew up rewards!<br></h4></div>
 
-    <p></p>
-    <div class="login-container">
-        <h2>Create Your Account</h2>
-        <form action="/users" method="post">
-            <div class="input-container">
-                <label for="first_name">First Name</label>
-                <input type="text" id="first_name" name="first_name" required>
-            </div>
-            <div class="input-container">
-                <label for="last_name">Last Name</label>
-                <input type="text" id="last_name" name="last_name" required>
-            </div>
-            <div class="input-container">
-                <label for="email">Email</label>
-                <input type="text" id="email" name="email" required>
-            </div>
-            <div class="input-container">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <div class="input-container">
-                <label for="confirm_password">Confirm Password</label>
-                <input type="password" id="confirm_password" name="confirm_password" required>
-            </div>
-            <div class="input-container">
-                <label for="dob">Date of Birth</label>
-                <input type="date" id="dob" name="dob" required>
-            </div>
-            <div class="input-container">
-                <label for="address">Address</label>
-                <input type="text" id="address" name="address" required>
-            </div>
-            <div class="input-container">
-                <label for="phone">Phone Number</label>
-                <input type="text" id="phone" name="phone" required>
-            </div> 
-            <div class="input-container">
-                 <label for="">Your bio</label>
-                <textarea name="bio"></textarea>  
-            </div> 
-            <button type="submit">Sign Up</button> 
-        </form> 
+<div class="description">
+  <h2><center>Become a Member</center></h2>
+  <h4>
+    Welcome to Perk Points, where every sip counts!<br />Share your love for
+    coffee with the world. As a member, you can post your coffee moments, earn
+    points, and brew up rewards!<br />
+  </h4>
+</div>
+<style>
+  .big-login-container {
+    background-image: url("/images/coffee-cup1.gif");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 90%;
+    background-position: center;
+  }
+</style>
+<div class="big-login-container">
+<div class="login-container">
+  <h2>Create Your Account</h2>
+  <form action="/users" method="post">
+    <div class="input-container">
+      <label for="first_name">First Name</label>
+      <input type="text" id="first_name" name="first_name" required />
+    </div>
+    <div class="input-container">
+      <label for="last_name">Last Name</label>
+      <input type="text" id="last_name" name="last_name" required />
+    </div>
+    <div class="input-container">
+      <label for="email">Email</label>
+      <input type="text" id="email" name="email" required />
+    </div>
+    <div class="input-container">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required />
+    </div>
+    <div class="input-container">
+      <label for="confirm_password">Confirm Password</label>
+      <input
+        type="password"
+        id="confirm_password"
+        name="confirm_password"
+        required
+      />
+    </div>
+    <div class="input-container">
+      <label for="dob">Date of Birth</label>
+      <input type="date" id="dob" name="dob" required />
+    </div>
+    <div class="input-container">
+      <label for="address">Address</label>
+      <input type="text" id="address" name="address" required />
+    </div>
+    <div class="input-container">
+      <label for="phone">Phone Number</label>
+      <input type="text" id="phone" name="phone" required />
+    </div>
+    <div class="input-container">
+      <label for="">Your bio</label>
+      <textarea name="bio"></textarea>
+    </div>
+    <div class="input-container">
+      <br /><br />
+      <label for="isOwner">Are you signing up as an owner?</label>
+      <input type="checkbox" id="isOwner" name="isOwner" value="true" />
     </div>
 
+    <br /><button type="submit">Sign Up</button>
+    </div>
+  </form>
+</div>
+
 <% } else { %>
-    <p>You're already logged in!</p>
+<p>You're already logged in!</p>
 <% } %>
 
-<div class="description"><h2>Free Coffee</h2>
-    <h4>Earn points with each purchase and redeem them for free coffees. Your morning coffee tastes even better when it’s on us!</h4></div>
+<div class="description">
+  <h2>Free Coffee</h2>
+  <h4>
+    Earn points with each purchase and redeem them for free coffees. Your
+    morning coffee tastes even better when it’s on us!
+  </h4>
+</div>
 
-<div class="bottom-space"></div> 
+<div class="bottom-space"></div>

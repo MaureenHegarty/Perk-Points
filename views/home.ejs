@@ -1,16 +1,110 @@
+<!-- http://localhost:8080/ -->
+<style>
+  @keyframes moving {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
 
-<div class="description"><h2>Savour the Flavour</h2>
-<h4>Our coffee partners source their beans from the finest in the world, providing a rich flavour profile. Every sip is a new experience!<br>Check out what members have posted below<br></h4></div>
+  h2.home {
+    animation: moving 2s linear infinite;
+    margin-top: -20px;
+  }
+</style>
 
-<% for (let coffee of coffees)  { %>
-        
-    <h2>
-        <a href="/coffees/<%= coffee.id %>">
-            <span class="coffee-name"><%= coffee.coffee_name %></span>
-        </a>
-    </h2>
-    
-<img src="<%= coffee.image_url %>" alt="">
 
-<% } %>
+  <!-- <h4>
+    Join the Perk Points Program, and enjoy the rewards that come with every
+    sip!<br />
+  </h4> -->
+  <div class="section-container">
+    <a href="/signup">
+      <div class="section">
+        <img src="public/images/join.png" alt="Join Icon" />
+        <h2>Join</h2>
+        <h4>Start earning points today!</h4>
+      </div>
+    </a>
+    <a href="/boost">
+      <div class="section">
+        <img src="public/images/boost.png" alt="Boost Icon" />
+        <h2>Boost</h2>
+        <h4>More chances to earn points!</h4>
+      </div>
+    </a>
+    <a href="/christmas">
+      <div class="section">
+        <img src="public/images/shop.png" alt="Shop Icon" />
+        <h2>Shop</h2>
+        <h4>Shope and save!</h4>
+      </div>
+    </a>
+    <a href="/enjoy">
+      <div class="section">
+        <img src="public/images/enjoy.png" alt="Enjoy Icon" />
+        <h2>Enjoy</h2>
+        <h4>Tell us how much you enjoy it!</h4>
+      </div>
+    </a>
+  </div>
+</div><p></p><p></p>
+<h2 class="home">Perk Points Benefits</h2>
+<div id="coffee-container">
+  <h4 id="coffee-name"></h4>
+  <img id="coffee-image" src="" alt="" />
+</div>
+<br />
+<br />
+<script>
+  let coffees = [<% coffees.forEach(coffee => { %>"<%= coffee.image_url %>", "<%= coffee.coffee_name %>",<% }); %>];
+  let index = 0;
+
+  function changeImage() {
+    document.getElementById('coffee-image').src = coffees[index];
+    document.getElementById('coffee-name').innerHTML = coffees[index + 1];
+    index += 2;
+    if (index >= coffees.length) index = 0;
+  }
+
+  setInterval(changeImage, 1500); // Change every 3 seconds
+</script>
+
+<!-- <% for (let coffee of coffees) { %>
+
+<h2>
+  <a href="/coffees/<%= coffee.id %>">
+    <span class="coffee-name"><%= coffee.coffee_name %></span>
+  </a>
+</h2>
+
+<img src="<%= coffee.image_url %>" alt="" />
+
+<% } %> -->
+<div class="button-container">
+  <a href="/blog"> <button>Find Out More</button></a>
+  <a href="/signup"> <button>Join Now</button></a>
+</div>
+<article>
+  <img
+    class="article"
+    src="public/images/article.png"
+    alt="Blog Featured Image"
+  />
+  <h2 class="article">Earn Double Points for Christmas!</h2>
+  <p class="article">
+    Jingle all the way with "Perk Points" this Christmas! Our coffee rewards
+    program is spreading the holiday cheer by offering special rewards and
+    discounts to our loyal customers.
+  </p>
+  <a href="/christmas">
+    <button>Read More</button>
+  </a>
+</article>
 <div class="bottom-space"></div>
+</div>

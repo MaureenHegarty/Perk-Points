@@ -1,0 +1,39 @@
+<div class="description">
+  <h2>Enjoy & Earn Perk Points!</h2>
+  <h4>
+    Post or share a coffee and you will be earning points and reaping the
+    rewards of your Perk Point membership?<br />
+  </h4>
+</div>
+<div class="button-container">
+  <a href="/blog"> <button>Find Out More</button></a>
+  <a href="/signup"> <button>Join Now</button></a>
+</div>
+<center>
+  <% for (let coffee of coffees) { %>
+
+  <h2>
+    <a href="/coffees/<%= coffee.id %>">
+      <span class="coffee-name"><%= coffee.coffee_name %></span>
+    </a>
+  </h2>
+
+  <img src="<%= coffee.image_url %>" alt="" />
+
+  <% } %>
+</center>
+<div class="bottom-space"></div>
+
+<!-- <script>
+  let coffees = [<% coffees.forEach(coffee => { %>"<%= coffee.image_url %>", "<%= coffee.coffee_name %>",<% }); %>];
+  let index = 0;
+
+  function changeImage() {
+    document.getElementById('coffee-image').src = coffees[index];
+    document.getElementById('coffee-name').innerHTML = coffees[index + 1];
+    index += 2;
+    if (index >= coffees.length) index = 0;
+  }
+
+  setInterval(changeImage, 1500); // Change every 3 seconds
+</script> -->

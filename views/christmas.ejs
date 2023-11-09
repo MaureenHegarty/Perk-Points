@@ -1,0 +1,60 @@
+<h2 class="post">Earn Double Points for Christmas!</h2>
+<div class="featured-image-post">
+  <img src="/images/post.image.png" alt="" />
+</div>
+<div class="text-block-post">
+  <p class="post">
+    Jingle all the way with "Perk Points" this Christmas! Our coffee rewards
+    program is spreading the holiday cheer by offering special rewards and
+    discounts to our loyal customers. Whether you're grabbing your morning latte
+    or stocking up on gift cards for loved ones, "Perk Points" has got you
+    covered this holiday season.
+  </p>
+</div>
+<div class="quote-block-post">
+  <blockquote class="blockquote"><h4>Spend more to Save more!</h4></blockquote>
+  <cite> </cite>
+</div>
+<div class="slider-post">
+  <div class="slide">
+    <img src="/images/post.slide1.png" alt="Slide 1" />
+  </div>
+  <div class="slide">
+    <img src="/images/post.slide2.png" alt="Slide 2" />
+  </div>
+  <div class="slide">
+    <img src="/images/post.slide3.png" alt="Slide 3" />
+  </div>
+</div>
+<script>
+  let slideIndex = 0;
+  showSlides();
+
+  function showSlides() {
+    let i;
+    let slides = document.getElementsByClassName("slide");
+
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+
+    slideIndex++;
+    if (slideIndex > slides.length) {
+      slideIndex = 1;
+    }
+
+    slides[slideIndex - 1].style.display = "block";
+
+    setTimeout(showSlides, 2000); // Change image every 2 seconds
+  }
+</script>
+
+<div class="text-block-post">
+  <p class="post">
+    Christmas is just around the corner, and this year there's even more reason
+    to indulge in your favourite coffee treats! With Perk Points you can earn
+    discounts and freebies with every purchase. And on Black Friday, the more
+    you spend, the more you save!
+  </p>
+</div>
+<div class="bottom-space"></div>

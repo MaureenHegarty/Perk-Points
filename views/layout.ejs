@@ -1,40 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/style.css">
-</head>
-<body>
-
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
     <nav>
-        <div class="logo"><a href="/"><img src="/images/Perk_Points_Logo(1).png" alt="Logo"></a></div>
-        <a href="/">home</a>
-        <a href="/locations">locations</a>
-        <% if (userId) { %>
-            <a href="/coffees/new">share</a>
-            <a href="/account">account</a>
-            <!-- <a href="/coffees/account">account</a> -->
-            <form action="/logout" method="post">
-                <input type="hidden" name="_method" value="delete">
-                <button>logout</button>
-            </form>
-        <% } else { %>
-            <a href="/login">login</a>
-            <a href="/signup">signup</a>
-        <% } %>
+      <div class="logo">
+        <a href="/"><img src="/images/Perk_Points_Logo(1).png" alt="Logo" /></a>
+      </div>
+      <a href="/">home</a>
+      <!-- <a href="/locations">locations</a> -->
+      <% if (userId) { %>
+      <a href="/coffees/new">share</a>
+      <a href="/account">account</a>
+      <!-- <a href="/coffees/account">account</a> -->
+      <form action="/logout" method="post">
+        <input type="hidden" name="_method" value="delete" />
+        <style>
+  .logout-button {
+    margin-top: 30px;
+    font-size: 15px;
+  }
+</style>
+
+<button class="logout-button">logout</button>
+
+      </form>
+      <% } else { %>
+      <a href="/login">login</a>
+      <a href="/signup">join</a>
+      <% } %>
     </nav>
 
-    <div class="back-ground-color">
-    <div class="wordmark"><a href="/"><img src="/images/Perk_Points_Wordmark.png" alt="Logo"></a></div>
+    <style>
+  body, .back-ground-color {
+    margin-top: 0;
+    padding-top: 0;
+  }
 
-    <%- body %>
+  img.bigGif {
+    width: 100%;
+    transition: none !important;
+  transform: none !important;
+  }
+</style>
+
+<body>
+  <div class="back-ground-color">
+    <div class="description.gif">
+      <img
+        class="bigGif"
+        src="/images/perk-points-logo.gif"
+        alt="Perk Points Logo"
+      />
+      <%- body %>
     </div>
-
+    
     <div class="footer">
-    <footer></footer>
+        <footer></footer>
+    </body>
+    </html>
 </div>
-
-</body>
-</html>
+</div>
