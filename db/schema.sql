@@ -11,7 +11,9 @@ CREATE TABLE users (
     phone TEXT,
     dob DATE,
     profile_picture TEXT,
-    bio TEXT
+    bio TEXT,
+    points INTEGER,
+    isowner TEXT
 );
 
 CREATE TABLE coffees (
