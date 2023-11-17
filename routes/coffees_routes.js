@@ -9,43 +9,6 @@ router.get("/form", (req, res) => {
   res.render("form");
 });
 
-//   cloudinary.uploader.upload(file.tempFilePath, (err, result) => {
-//     if (err) {
-//       return res.status(500).send(err);
-//     }
-//     console.log(result.url);
-//     // Insert a new row in the coffees table with the coffee name and image URL
-//     db.none(
-//       "INSERT INTO coffees (user_id, coffee_name, result.url) VALUES($1, $2, $3)",
-//       [user_id, coffee_name, result.url]
-//     )
-//       .then(() => {
-//         res.json({ url: result.url });
-//       })
-//       .catch((err) => {
-//         res.status(500).send(err);
-//       });
-
-// =====================================================================
-// router.post("/upload", upload.single("uploadfile"), (req, res) => {
-//   console.log(req.file.path);
-//   let coffee_name = req.body.coffee_name;
-//   const sql = `INSERT INTO coffees (user_id, coffee_name, image_url) VALUES ($1, $2, $3)
-//     RETURNING *;
-//     `;
-
-//   db.query(
-//     sql,
-//     [req.session.userId, coffee_name, req.file.path, location],
-//     (err, dbRes) => {
-//       if (err) {
-//         console.log(err);
-//       }
-//       res.send("yay");
-//     }
-//   );
-// });
-
 router.get("/new", ensureLoggedIn, (req, res) => {
   res.render("new_form");
 });
@@ -244,31 +207,3 @@ router.put("/:id", ensureLoggedIn, (req, res) => {
 });
 
 module.exports = router;
-
-// router.post("/upload", (req, res) => {
-//   if (!req.files || !req.files.photo) {
-//     return res.status(400).send("No files were uploaded.");
-//   }
-
-//   const file = req.files.photo;
-//   const coffeeName = req.body.title; // get the coffee name from the form
-//   const userId = req.user.id; // get the user id from the session
-
-//   cloudinary.uploader.upload(file.tempFilePath, (err, result) => {
-//     if (err) {
-//       return res.status(500).send(err);
-//     }
-
-//     // Insert a new row in the coffees table with the coffee name and image URL
-//     db.none(
-//       "INSERT INTO coffees (user_id, coffee_name, image_url) VALUES($1, $2, $3)",
-//       [userId, coffeeName, result.url]
-//     )
-//       .then(() => {
-//         res.json({ url: result.url });
-//       })
-//       .catch((err) => {
-//         res.status(500).send(err);
-//       });
-//   });
-// });

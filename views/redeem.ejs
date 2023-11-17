@@ -1,0 +1,64 @@
+<!-- redeem.ejs file /redeem -->
+
+<h1>Coffee Shop App</h1>
+<div id="qr-code-scanner"></div>
+<p id="points"></p>
+<button id="redeem-button" onclick="redeem()">Redeem</button>
+<p id="message"></p>
+<script>
+  // Initialize the QR code scanner
+  const scanner = new html5qrcode("qr-code-scanner");
+
+  // Start scanning
+  scanner.start(
+    { fps: 10, qrbox: 250 },
+    (code) => {
+      // Stop scanning
+      scanner.stop();
+
+      // Display the code
+      console.log("QR code: " + code);
+
+      // Get the user ID from the code
+      const userId = code.split("-")[1];
+
+      // Display the points for the user
+      fetch("/points/" + userID)
+        .then((response) => response.json())
+        .then((data) => {
+          document.getElementById("points").innerHTML =
+            "Points: " + data.points;
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    },
+    (error) => {
+      // Handle error
+      console.error(error);
+    }
+  );
+
+  // Define a function to redeem the points
+  function redeem() {
+    // Get the user ID from the code
+    const userId = code.split("-")[1];
+
+    // Send a request to the redeem route
+    fetch("/redeem", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ userID: userID }),
+    })
+      .then((response) => response.text())
+      .then((data) => {
+        // Display the message from the server
+        document.getElementById("message").innerHTML = data;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+</script>

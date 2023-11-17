@@ -61,12 +61,15 @@ Perk Points is a Coffee Card Loyalty Program which rewards members with points f
 Users can keep track of the points they earn on their Perks Point account.
 When a user creates an account they receive a unique QR Code. Café owner scans this QR code after a coffee purchase, and the unique ID encoded in the QR code can be used to identify the user in the PostgreSQL database.
 
+## to see my live project [here](https://perk-points-yr5i.onrender.com)
+
 ### Planning
 
 QR Code Generation: `Generating a unique QR code` for each user with their unique ID encoded in it. To be done in via an Express.js route.<br>
 
  <p align="center"> &darr;  &darr;  &darr;</p>
-Scanning the QR Code: `Café owner scans the QR code` using a QR code scanner. This scanner can be a standalone device or a smartphone app. The scanner should be able to interpret the QR code and extract the user’s unique ID.<br>
+
+Scanning the QR Code: ` Café owner scans the QR code` using a scanner. This scanner can be a standalone device or a smartphone app. The scanner should be able to interpret the QR code and extract the user’s unique ID.<br>
 
  <p align="center"> &darr;  &darr;  &darr;</p>
 
@@ -123,3 +126,4 @@ These checks are done on the server-side after the form is submitted.
 
 - multiple scans when single wanted
 - Single scan when multiple wanted
+- currently hard-coded to one cafe owner

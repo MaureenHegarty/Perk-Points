@@ -56,6 +56,44 @@ router.put("/addPoints/:id", async (req, res) => {
   }
 });
 
+// ============== Redeem points from users account ==============
+router.put("/redeemPoints/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const pointsToRedeem = 50; // number of points to redeem
+
+    // Fetch the user's current points from the database
+    const userRes = await db.query("SELECT points FROM users WHERE id = $1", [
+      id,
+    ]);
+
+    if (userRes.rows.length === 0) {
+      return res.status(404).send({ message: "User not found" });
+    }
+
+    const currentPoints = userRes.rows[0].points;
+
+    // Check if the user has enough points
+    if (currentPoints < pointsToRedeem) {
+      return res.status(400).send({ message: "Not enough points to redeem" });
+    }
+
+    // Redeem the points
+    const updatedUserRes = await db.query(
+      "UPDATE users SET points = points - $1 WHERE id = $2 RETURNING *",
+      [pointsToRedeem, id]
+    );
+    const updatedUser = updatedUserRes.rows[0];
+
+    res
+      .status(200)
+      .send({ message: "Points redeemed successfully", user: updatedUser });
+  } catch (err) {
+    console.error("Failed to redeem points", err);
+    res.status(500).send("Failed to redeem points");
+  }
+});
+
 router.post("/users", (req, res) => {
   console.log(req.body);
   const sql = `INSERT INTO users (first_name, last_name, email, password_digest, dob, address, phone, bio, isOwner) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`;
@@ -132,6 +170,52 @@ router.put("/account/:id", ensureLoggedIn, (req, res) => {
     res.redirect(`/account`);
   });
 });
+
+// Define a route for the redeem function
+router.post("/redeem", async (req, res) => {
+  // Get the user ID from the request body
+  let user = req.session.userId;
+
+  // Query the database to get the points for the customer
+  const result = await pool.query("SELECT points FROM users WHERE id = $1", [
+    user,
+  ]);
+
+  // Check if the points are equal to or greater than 50
+  if (result.rows[0].points >= 50) {
+    // Update the points to zero in the database
+    await pool.query("UPDATE users SET points = 0 WHERE id = $1", [userId]);
+
+    // Send a success message to the user
+    res.send("You have redeemed your points!");
+  } else {
+    // Send an error message to the user
+    res.send("You do not have enough points to redeem!");
+  }
+});
+
+// Define a function to redeem the points
+function redeem() {
+  // Get the user ID from the code
+  const userId = qrCode.split("-")[1];
+
+  // Send a request to the redeem route
+  fetch("/redeem", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ userID: userId }),
+  })
+    .then((response) => response.text())
+    .then((data) => {
+      // Display the message from the server
+      document.getElementById("message").innerHTML = data;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
 
 module.exports = router;
 
